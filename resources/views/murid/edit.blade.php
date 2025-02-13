@@ -1,6 +1,6 @@
 @include('layout.header')
 <h3>Edit Data Siswa</h3>
-<form action="{{ route('murid.update', $murid->id_murid) }}" method="post">
+<form action="{{ route('murid.update', $murid->id_murid) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">

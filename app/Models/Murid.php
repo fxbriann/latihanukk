@@ -10,7 +10,7 @@ class Murid extends Model
     protected $table = 'murids';
 
     protected $fillable = [
-        'no_murid', 
+        'id_murid', 
         'nama', 
         'kelas', 
         'alamat',

@@ -1,10 +1,10 @@
 @include('layout.header')
         <h3>Buat Data Siswa</h3>
-        <form action="{{ route( 'murid.store' ) }}" method="post">
+        <form action="{{ route( 'murid.store' ) }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="no_murid">No Murid</label>
-                <input type="text" name="nomor" id="no_murid" class="form-control">
+                <input type="text" name="id_murid" id="id_murid" class="form-control">
             </div>
             <div class="form-group">
                 <label for="nama">Nama</label>

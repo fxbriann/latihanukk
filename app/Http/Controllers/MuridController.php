@@ -29,12 +29,18 @@ class MuridController extends Controller
      */
     public function store(Request $request)
     {
-        // buat validasi
-        $validatedData = $request->validate([
-            'nama_murid' =>'required|max:100',
+        
+        
+        $validatedData=$request->validate([
+            'id_murid' =>'required|max:100',
+            'nama' =>'required|max:100',
+            'kelas' =>'required|max:100',
+            'alamat' =>'required|max:100',
+            'tahun_masuk' =>'required|max:100',
+            'nama_wali' =>'required|max:100',
         ]);
 
-        // simpan data
+        
         Murid::create($validatedData);
 
         //redirect ke index murid
@@ -52,26 +58,36 @@ class MuridController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Murid $murid)
+    public function edit(string $id)
     {
-        return view ('murid.edit', compact('murid'));
+        $murid = Murid::where('id_murid', $id)->firstOrFail();
+        
+        return view('murid.edit', compact('murid'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Murid $murid)
+    public function update(Request $request, string $id)
     {
-        //buat validasi
+        // Ambil data murid berdasarkan id_murid
+        $murid = Murid::where('id_murid', $id)->firstOrFail();
+    
+        // Buat validasi
         $validatedData = $request->validate([
-            'nama_murid' =>'required|max:100',
+            'id_murid'    => 'required|max:100',
+            'nama'        => 'required|max:100',
+            'kelas'       => 'required|max:100',
+            'alamat'      => 'required|max:100',
+            'tahun_masuk' => 'required|max:100',
+            'nama_wali'   => 'required|max:100',
         ]);
-
-        //update data
+    
+        // Update data murid
         $murid->update($validatedData);
-
-        //redirect ke index murid
-        return redirect()->route('murid.index');
+    
+        // Redirect ke index murid dengan pesan sukses
+        return redirect()->route('murid.index')->with('success', 'Data murid berhasil diperbarui.');
     }
 
     /**
