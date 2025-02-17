@@ -3,11 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MuridController;
+use Illuminate\Support\Facades\Auth;
 
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('welcome'); //  Tambahkan name route welcome
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('murid.index');
 });
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('murid.index'); // Redirect ke murid.index setelah logout
+})->name('logout')->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

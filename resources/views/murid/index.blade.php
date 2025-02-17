@@ -2,6 +2,10 @@
 @include('layout.header')
         <h3>Data Siswa</h3>
         <a href="{{ route('murid.create') }}" class="tombol">Tambah</a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="tombol">Logout</button>
+        </form>        
         <table>
             <thead>
                 <tr>
