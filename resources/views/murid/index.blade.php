@@ -1,3 +1,4 @@
+/*
 @include('layout.header')
         <h3>Data Siswa</h3>
         <a href="{{ route('murid.create') }}" class="tombol">Tambah</a>
@@ -37,6 +38,7 @@
                         <td>
                             <form action="{{ route('murid.destroy', $murid->id_murid) }}" method="POST">
                                 <a href="{{ route('murid.edit', $murid->id_murid) }}" class="tombol">Edit</a>
+                               
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="tombol">Hapus</button>
@@ -48,3 +50,4 @@
             </tbody>
         </table>
 @include('layout.footer')        
+*/

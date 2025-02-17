@@ -70,24 +70,18 @@ class MuridController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Ambil data murid berdasarkan id_murid
-        $murid = Murid::where('id_murid', $id)->firstOrFail();
-    
-        // Buat validasi
         $validatedData = $request->validate([
-            'id_murid'    => 'required|max:100',
-            'nama'        => 'required|max:100',
-            'kelas'       => 'required|max:100',
-            'alamat'      => 'required|max:100',
+            'id_murid' => 'required|max:100',
+            'nama' => 'required|max:100',
+            'kelas' => 'required|max:100',
+            'alamat' => 'required|max:100',
             'tahun_masuk' => 'required|max:100',
-            'nama_wali'   => 'required|max:100',
+            'nama_wali' => 'required|max:100',
         ]);
-    
-        // Update data murid
-        $murid->update($validatedData);
-    
-        // Redirect ke index murid dengan pesan sukses
-        return redirect()->route('murid.index')->with('success', 'Data murid berhasil diperbarui.');
+
+        Murid::where('id_murid', $id)->update($validatedData);
+
+        return redirect()->route('murid.index')->with('success', 'Data murid berhasil diperbarui');
     }
 
     /**

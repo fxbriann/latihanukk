@@ -2,7 +2,7 @@
 <h3>Edit Data Siswa</h3>
 <form action="{{ route('murid.update', $murid->id_murid) }}" method="POST">
     @csrf
-    @method('PUT')
+    @method('PATCH')
     <div class="form-group">
         <label for="no_murid">No Murid</label>
         <input type="text" name="id_murid" id="no_murid" value="{{ $murid->id_murid }}">
@@ -22,6 +22,10 @@
     <div class="form-group">
         <label for="tahun_masuk">Tahun Masuk</label>
         <input type="text" name="tahun_masuk" id="tahun_masuk" value="{{ $murid->tahun_masuk }}">
+    </div>
+    <div class="form-group">
+        <label for="tahun_masuk">nama wali</label>
+        <input type="text" name="nama_wali" id="nama_wali" value="{{ $murid->nama_wali }}">
     </div>
     <div class="form-group">
         <button type="submit" class="tombol">Update</button>

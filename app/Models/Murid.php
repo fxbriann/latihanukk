@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Murid extends Model
 
 {
-    protected $table = 'murids';
+    protected $table = 'murids'; // Menentukan nama tabel yang benar
+    protected $primaryKey = 'id_murid'; // Menentukan primary key yang benar
+    public $incrementing = true; // Jika id_murid adalah auto-increment
+    protected $keyType = 'int'; // Tipe data primary key
 
     protected $fillable = [
         'id_murid', 
